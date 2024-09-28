@@ -1,4 +1,6 @@
 import Dropdown from 'react-bootstrap/Dropdown'
+import { useState } from 'react';
+import axios from 'axios';
 
 function HomeScreen() {
     const majors = [
@@ -105,13 +107,40 @@ function HomeScreen() {
         "Urban Studies"
       ];
 
+    const uri = "http://localhost:8080/api/gemini";
+
+
+    const [resp, setResp] = useState('');
+    const [interest, setInterest] = useState('');
+    
+
+    const handleSubmit = async() => {
+        const formData = new FormData();
+
+        formData.append('Interests', interest)
+        const customHeader = {
+            headers: {
+                "Content-Type": 'multipart/form-data',
+            },
+        }
+        
+        const response = await axios.post(uri, formData, customHeader)
+        console.log(response)
+        setResp(response.data['Response']);
+        setInterest('');
+
+    }
+
+  
+
   return (
     <div className="container-fluid text-center">
         <div className="row-2">
             <h3> What subject(s) are you interested in? </h3>
             <div className="input-group d-flex flex-column align-items-center">
                 <div className="col-8">
-                <textarea className="form-control" aria-label="With textarea" style={{height: "200%"}}></textarea>
+                <textarea className="form-control" aria-label="With textarea" style={{height: "200%"}}
+                value={ interest } onChange={e => setInterest(e.target.value)}></textarea>
                 </div>
             </div>
             
@@ -126,7 +155,12 @@ function HomeScreen() {
                     ))}
                 </Dropdown.Menu>
             </Dropdown>*/}
-            <button>Submit!</button>
+            {resp && (
+                <div className="Response-message">
+                    {resp}
+                </div>
+            )}
+            <button onClick={handleSubmit}>Submit!</button>
         </div>
     </div>
   )
