@@ -134,7 +134,6 @@ function HomeScreen() {
         setInterest('');
 
         // Move to new page
-        console.log("TEST!");
         navigate("/classes");
     }
 
