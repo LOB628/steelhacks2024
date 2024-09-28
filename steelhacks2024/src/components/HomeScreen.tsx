@@ -1,6 +1,9 @@
 //import Dropdown from 'react-bootstrap/Dropdown'
 import { useState } from 'react';
 import axios from 'axios';
+import CourseCard from './Card';
+
+const DummyCourse = [{"title": "ECE 0301", "description": "Introduction to problem solving with C++", "professor": "Dr. Gavin"}]
 
 function HomeScreen() {
     /*const majors = [
@@ -181,6 +184,9 @@ function HomeScreen() {
                     Submit!
                 </button>
             </div>
+
+            <CourseCard CourseInfo={DummyCourse} />
+
         </div>
     </div>
     </>
