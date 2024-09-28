@@ -1,9 +1,9 @@
-import Dropdown from 'react-bootstrap/Dropdown'
+//import Dropdown from 'react-bootstrap/Dropdown'
 import { useState } from 'react';
 import axios from 'axios';
 
 function HomeScreen() {
-    const majors = [
+    /*const majors = [
         "Accounting",
         "Actuarial Mathematics",
         "Africana Studies",
@@ -105,7 +105,8 @@ function HomeScreen() {
         "Theatre Arts",
         "Urban Planning and Geographic Analysis",
         "Urban Studies"
-      ];
+      ];*/
+    
     const [isHovered, setIsHovered] = useState(false);
 
     const uri = "http://localhost:8080/api/gemini";
