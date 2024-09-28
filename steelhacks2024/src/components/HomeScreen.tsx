@@ -134,6 +134,7 @@ function HomeScreen() {
         setInterest('');
 
         // Move to new page
+        console.log("TEST!");
         navigate("/classes");
     }
 
@@ -154,7 +155,7 @@ function HomeScreen() {
             <h3> What subject(s) are you interested in? </h3>
             <div className="input-group justify-content-center">
                 <div className="col-8">
-                <textarea className="form-control" aria-label="With textarea" style={{height: "200%"}}
+                <textarea className="form-control" aria-label="With textarea" style={{height: "20vh"}}
                 value={ interest } onChange={e => setInterest(e.target.value)}></textarea>
                 </div>
             </div>
@@ -175,11 +176,10 @@ function HomeScreen() {
                     {resp}
                 </div>
             )}
-            <button onClick={handleSubmit}>Submit!</button>
             <div className="row-2 mt-3">
                 <button className="btn btn-lg btn-outline-primary" type="submit" 
                 style={{fontWeight: "bold", backgroundColor: isHovered ? "#0d6efd" : "#003594", color: "#FFB81C"}}
-                onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
+                onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)} onClick={handleSubmit}>
                     Submit!
                 </button>
             </div>
