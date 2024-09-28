@@ -6,7 +6,6 @@ from dotenv import load_dotenv
 #Gemini Functions
 from Gemini.Chat import LiveChat
 from Gemini.Gemini import Gemini as Gemi
-from Gemini.Scheduler import Schedule
 
 app = Flask(__name__)
 app.config['CORS_HEADERS'] = 'Content-Type'
@@ -21,19 +20,6 @@ def Gemini():
     #print(prompt['content'])
     try:
         res = Gemi(prompt['content'])
-        return {'Code':200, 'Response': res}
-    except:
-        print("Something went wrong")
-        return {'Code':500, 'Response': 'Something went wrong'}
-    
-@app.route('/api/schedule', methods=['POST'])
-@cross_origin(origin="*", headers=['Content-Type', 'Authorization'])
-def Scheduling():
-
-    #*What am I going to need to pull here? Take the major and other stuff
-
-    try:
-        res = Schedule()
         return {'Code':200, 'Response': res}
     except:
         print("Something went wrong")
