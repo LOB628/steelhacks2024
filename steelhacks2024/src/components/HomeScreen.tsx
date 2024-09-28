@@ -1,6 +1,7 @@
 //import Dropdown from 'react-bootstrap/Dropdown'
 import { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 function HomeScreen() {
     /*const majors = [
@@ -108,6 +109,7 @@ function HomeScreen() {
       ];*/
     
     const [isHovered, setIsHovered] = useState(false);
+    const navigate = useNavigate();
 
     const uri = "http://localhost:8080/api/gemini";
 
@@ -131,9 +133,9 @@ function HomeScreen() {
         setResp(response.data['Response']);
         setInterest('');
 
+        // Move to new page
+        navigate("/classes");
     }
-
-  
 
   return (
     <>
