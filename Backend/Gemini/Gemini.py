@@ -15,4 +15,4 @@ def Gemini(prompt):
     return res.text
 
 if(__name__ == "__main__"):
-    print(Gemini())
+    print(Gemini("What is the difference between HTTP and Websocket protocols?"))
