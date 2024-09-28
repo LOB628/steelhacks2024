@@ -1,4 +1,3 @@
-import React from 'react'
 import Dropdown from 'react-bootstrap/Dropdown'
 
 function HomeScreen() {
@@ -109,8 +108,14 @@ function HomeScreen() {
   return (
     <div className="container-fluid text-center">
         <div className="row-2">
-            <h3> Please select your major: </h3>
-            <Dropdown>
+            <h3> What subject(s) are you interested in? </h3>
+            <div className="input-group d-flex flex-column align-items-center">
+                <div className="col-8">
+                <textarea className="form-control" aria-label="With textarea" style={{height: "200%"}}></textarea>
+                </div>
+            </div>
+            
+            {/*<Dropdown>
                 <Dropdown.Toggle variant="secondary" id="dropdown-basic" 
                 style={{fontWeight: "bold", backgroundColor: "#003594", color: "#FFB81C"}}>
                     Majors
@@ -120,7 +125,8 @@ function HomeScreen() {
                         <Dropdown.Item href="#/action-1">{item}</Dropdown.Item>
                     ))}
                 </Dropdown.Menu>
-            </Dropdown>
+            </Dropdown>*/}
+            <button>Submit!</button>
         </div>
     </div>
   )
