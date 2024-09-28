@@ -9,7 +9,7 @@ function NavBar() {
         <nav className="navbar navbar-expand-lg" style={{backgroundColor: "#003594"}}>
         <div className="container-fluid">
             <div className="row-sm">
-                <a className="navbar-brand" href="" style={{fontSize: "24px", fontWeight: "bold", color: "#FFB81C"}}>
+                <a className="navbar-brand" href="/" style={{fontSize: "24px", fontWeight: "bold", color: "#FFB81C"}}>
                     <img src={logo} alt="Panther" width="30" height="24"/>
                     <span>&nbsp; Pitt ClassFinder</span>
                 </a>
