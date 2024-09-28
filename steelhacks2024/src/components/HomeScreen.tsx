@@ -1,4 +1,5 @@
-import Dropdown from 'react-bootstrap/Dropdown'
+//import Dropdown from 'react-bootstrap/Dropdown'
+import { useState } from 'react'
 
 function HomeScreen() {
     const majors = [
@@ -104,14 +105,26 @@ function HomeScreen() {
         "Urban Planning and Geographic Analysis",
         "Urban Studies"
       ];
+    const [isHovered, setIsHovered] = useState(false);
 
   return (
+    <>
+    <div style={{fontSize: "20px"}}>
+        <h1>Welcome to Pitt ClassFinder!</h1>
+        <p>
+            Pitt ClassFinder is a website that utilizes Google Gemini to connect students to classes that interest them!
+            <br /> To get started, please answer the question below:
+        </p>
+    </div>
+
+    <br /> <br />
+
     <div className="container-fluid text-center">
         <div className="row-2">
             <h3> What subject(s) are you interested in? </h3>
-            <div className="input-group d-flex flex-column align-items-center">
+            <div className="input-group justify-content-center">
                 <div className="col-8">
-                <textarea className="form-control" aria-label="With textarea" style={{height: "200%"}}></textarea>
+                <textarea className="form-control" style={{height: "20vh"}}></textarea>
                 </div>
             </div>
             
@@ -126,9 +139,16 @@ function HomeScreen() {
                     ))}
                 </Dropdown.Menu>
             </Dropdown>*/}
-            <button>Submit!</button>
+            <div className="row-2 mt-3">
+                <button className="btn btn-lg btn-outline-primary" type="submit" 
+                style={{fontWeight: "bold", backgroundColor: isHovered ? "#0d6efd" : "#003594", color: "#FFB81C"}}
+                onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
+                    Submit!
+                </button>
+            </div>
         </div>
     </div>
+    </>
   )
 }
 
