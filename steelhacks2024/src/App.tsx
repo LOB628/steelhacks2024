@@ -6,8 +6,6 @@ function App() {
   return (
     <>
       <NavBar />
-      <h1>Welcome to our Steelhacks project!</h1>
-      <br />
       <HomeScreen />
     </>
   )
