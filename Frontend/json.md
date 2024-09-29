@@ -2,7 +2,8 @@
 {  "core_business_classes": [
 {"name": "Principles of Management", "description": "Provides an overview of management theories and practices, including planning, organizing, leading, and controlling."},
  { "name": "Financial Accounting","description": "Covers the fundamentals of accounting, including financial statements, budgeting, and cost accounting." }, 
- { "name": "Marketing Management", "description": "Explores marketing concepts, strategies, and tools, including market research, product development, pricing, and promotion." },\n    { "name": "Business Law",  "description": "Introduces legal principles relevant to business, including contracts, torts, and intellectual property." },
+ { "name": "Marketing Management", "description": "Explores marketing concepts, strategies, and tools, including market research, product development, pricing, and promotion." },
+ { "name": "Business Law",  "description": "Introduces legal principles relevant to business, including contracts, torts, and intellectual property." },
  { "name": "Economics for Business", "description": "Explains economic principles and their applications to business decisions, including supply and demand, competition, and government regulation." },
  { "name": "Statistics for Business", "description": "Develops statistical skills for analyzing business data, including data collection, hypothesis testing, and regression analysis." },
  { "name": "Operations Management", "description": "Covers the management of production processes, including quality control, inventory management, and supply chain management."},{ "name": "Human Resource Management", "description": "Examines the management of human resources, including recruitment, training, compensation, and employee relations."} 

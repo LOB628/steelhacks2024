@@ -1,6 +1,8 @@
 #API Stuff
 from flask import Flask, request
 from flask_cors import CORS, cross_origin
+import os
+import threading
 #Utils
 from dotenv import load_dotenv
 #Gemini Functions
@@ -66,4 +68,24 @@ def pitt():
         return {'Code': 200, 'Response': response}
     except():
         return {'Code': 500, 'Response': "An error occurred."}
+    
+def init_front():
+    path = os.getcwd()
+    os.chdir(path + "/Frontend/")
+    os.system("npx vite")
+
+def init_back():
+    app.run(port=8080)
+
+if(__name__ == '__main__'):
+    #init_front()
+
+    front = threading.Thread(target=init_front)
+    back = threading.Thread(target=init_back)
+
+    front.start()
+    back.start()
+
+    front.join()
+    back.join()
     
