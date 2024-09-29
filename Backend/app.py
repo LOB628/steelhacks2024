@@ -24,7 +24,6 @@ def gemi():
         return {'Code':200, 'Response': res}
     except:
         print("Something went wrong")
-        res = genRecommandtions(prompt)
         return {'Code':500, 'Response': 'Something went wrong'}
 
 
