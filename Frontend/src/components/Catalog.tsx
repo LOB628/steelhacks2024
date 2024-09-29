@@ -83,7 +83,18 @@ function Catalog({ resp, setResp } : CatalogProps) {
     
     const response = await axios.post(uri, formData, customHeader)
     console.log(response)
-    setResp(response.data['Response']);
+    
+    // Convert response into proper JSON
+    let str = (response.data['Response'] as string);
+    str = str.substring(7, str.lastIndexOf("}")+1);
+    console.log(str);
+
+    if(str == "Something went wrong") {
+      console.error("Error! Something went wrong with backend!");
+      return
+    }
+
+    setResp(JSON.parse(str));
   }
 
   return (
