@@ -43,7 +43,7 @@ def init_chat():
     return {'Code': 200, 'Response': chatObj.history, 'Input': chatHistory}
 
 
-@app.route('/api/v1/chat', methods=['POST'])
+@app.route('/api/chat', methods=['POST'])
 @cross_origin(origin="*", headers=['Content-Type', 'Authorization'])
 def chat():
     message = request.form.get('message')
@@ -54,3 +54,4 @@ def chat():
         return {'Code': 200, 'Response': response}
     except():
         return {'Code': 500, 'Response': "An error occurred."}
+    

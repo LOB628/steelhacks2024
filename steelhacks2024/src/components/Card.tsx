@@ -15,8 +15,6 @@ export default function CourseCard({CourseInfo, statureHook} : any){
     return CourseInfo.map(({title, description, professor} : any) => (
         <>
           <div style={{backgroundColor: clicked === true ? 'green' : 'red'}}>
-          
-          
             <Card style={{ width: '18rem', padding: '1rem'}}>
               <Card.Body>
                 <Card.Title>{title}</Card.Title>
@@ -24,7 +22,7 @@ export default function CourseCard({CourseInfo, statureHook} : any){
                 <Card.Text>
                     {description}
                 </Card.Text>
-                <Button variant="primary" onClick={handleClick}>Save for Later</Button>
+                <Button variant={clicked === true ? "success" : "danger"} onClick={handleClick}>Save for Later</Button>
               </Card.Body>
             </Card>
           </div>
