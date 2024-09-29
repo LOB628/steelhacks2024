@@ -86,7 +86,8 @@ function Catalog({ resp, setResp } : CatalogProps) {
     
     // Convert response into proper JSON
     let str = (response.data['Response'] as string);
-    str = str.substring(7, str.lastIndexOf("}")+1);
+    str = str.substring(str.lastIndexOf("{"), str.lastIndexOf("}")+1);
+
     console.log(str);
 
     if(str == "Something went wrong") {
