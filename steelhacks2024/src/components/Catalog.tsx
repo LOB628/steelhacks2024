@@ -36,7 +36,7 @@ function Catalog({ resp, setResp } : CatalogProps) {
   const [card4Selected, setCard4Selected] = useState(false);
 
   const [isHovered, setIsHovered] = useState(false);
-  const [apiData, setApiData] = useState('');
+  const [apiData, setApiData] = useState('temp');         // Note: Set to 'temp' so program displays
   const [classes, setClasses] = useState<Classes | null>({
     class1Name: "",
     class1Decision: false,
@@ -50,7 +50,7 @@ function Catalog({ resp, setResp } : CatalogProps) {
 
   const uri = "http://localhost:8080/api/chat";
 
-  useEffect(() => {
+  /*useEffect(() => {
     fetch("http://localhost:8080/pitt-api")
     .then((res) => {
         if (!res.ok)
@@ -60,10 +60,10 @@ function Catalog({ resp, setResp } : CatalogProps) {
     })
     .then((data) => setApiData(data))
     .catch((e) => console.error("Error fetching table:", e))
-}, []);
+}, []);*/
 
   const handleSubmit = async() => {
-    setApiData('')
+    //setApiData('')
 
     const formData = new FormData();
 
@@ -79,6 +79,8 @@ function Catalog({ resp, setResp } : CatalogProps) {
     setResp(response.data['Response']);
     setClasses(null);
   }
+
+  console.log(resp);
 
   return (
     <>
@@ -103,11 +105,11 @@ function Catalog({ resp, setResp } : CatalogProps) {
           </div>
         </div>
       }
-      <button className="btn btn-lg btn-outline-primary" type="submit" 
+      {apiData && <button className="btn btn-lg btn-outline-primary" type="submit" 
         style={{fontWeight: "bold", backgroundColor: isHovered ? "#0d6efd" : "#003594", color: "#FFB81C"}}
         onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)} onClick={handleSubmit}>
           Submit!
-      </button>
+      </button>}
     </>
   )
 }
