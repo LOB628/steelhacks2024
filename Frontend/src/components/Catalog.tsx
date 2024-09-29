@@ -38,16 +38,6 @@ function Catalog({ resp, setResp } : CatalogProps) {
 
   const [isHovered, setIsHovered] = useState(false);
   const [apiData, setApiData] = useState('temp');         // Note: Set to 'temp' so program displays properly while PittAPI not working
-  const [classes, setClasses] = useState<Classes | null>({
-    class1Name: "",
-    class1Decision: false,
-    class2Name: "",
-    class2Decision: false,
-    class3Name: "",
-    class3Decision: false,
-    class4Name: "",
-    class4Decision: false,
-  });
 
   const uri = "http://localhost:8080/api/chat";
 
@@ -64,10 +54,12 @@ function Catalog({ resp, setResp } : CatalogProps) {
     .catch((e) => console.error("Error fetching table:", e))
 }, []);*/
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
+    //setApiData('')
+
     console.log(resp);
 
-    setClasses({
+    const updatedClasses : Classes = {
       class1Name: resp.class1Name,
       class1Decision: card1Selected,
       class2Name: resp.class2Name,
@@ -76,19 +68,13 @@ function Catalog({ resp, setResp } : CatalogProps) {
       class3Decision: card3Selected,
       class4Name: resp.class4Name,
       class4Decision: card4Selected,
-    });
+    }
 
-    console.log(classes);
-
-    callBackend();
-  }
-
-  const callBackend = async () => {
-    //setApiData('')
+    console.log(updatedClasses);
 
     const formData = new FormData();
 
-    formData.append('classes', JSON.stringify(classes))
+    formData.append('classes', JSON.stringify(updatedClasses))
     const customHeader = {
         headers: {
             "Content-Type": 'multipart/form-data',
@@ -98,17 +84,6 @@ function Catalog({ resp, setResp } : CatalogProps) {
     const response = await axios.post(uri, formData, customHeader)
     console.log(response)
     setResp(response.data['Response']);
-    
-    setClasses({
-      class1Name: resp.class1Name,
-      class1Decision: false,
-      class2Name: resp.class2Name,
-      class2Decision: false,
-      class3Name: resp.class3Name,
-      class3Decision: false,
-      class4Name: resp.class4Name,
-      class4Decision: false,
-    })
   }
 
   return (

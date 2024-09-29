@@ -13,7 +13,7 @@ interface CourseCardProps {
 export default function CourseCard({courseName, courseNumber, description, statureVal, statureHook} : CourseCardProps){
 
     const [hidden, setHidden] = useState(true);
-    
+
     // Equalizes heights of cards. Might be a little less efficient than the DOM Listener, but it actually works with the backend.
     useEffect(() => {
       // Script to set card height to max height necessary
