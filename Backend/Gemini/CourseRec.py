@@ -16,9 +16,9 @@ def genRecommandtions(ScholarlyArea):
             " to learn more about " + ScholarlyArea + ". Please format your response in JSON format. "
     print(prompt)
 
-    #res = model.generate_content(prompt)
+    res = model.generate_content(prompt)
     #print(res.text)
-    return #res.text
+    return res.text
 
 if(__name__ == "__main__"):
     genRecommandtions("Sociology")
