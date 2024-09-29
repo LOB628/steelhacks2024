@@ -145,7 +145,7 @@ function HomeScreen( { setResp } : HomeScreenProps) {
         
         const response = await axios.post(uri, formData, customHeader)
         console.log(response)
-        setResp(response.data['Response']);
+        setResp(JSON.parse(response.data['Response']));
         setInterest('');
 
         // Move to new page
