@@ -12,8 +12,8 @@ def genRecommandtions(ScholarlyArea):
     genai.configure(api_key=key) 
     model = genai.GenerativeModel('gemini-1.5-flash')
 
-    prompt = "Below are a set of classes from the university of pittsburgh. What classes would you "\
-            " recommend to a student trying to learn more about " + ScholarlyArea + ". Please format your response in JSON format. "
+    prompt = "What classes would you recommend to a student trying"\
+            " to learn more about " + ScholarlyArea + ". Please format your response in JSON format. "
     print(prompt)
 
     #res = model.generate_content(prompt)
