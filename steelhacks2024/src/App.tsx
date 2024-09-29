@@ -18,14 +18,14 @@ interface Response {
 
 function App() {
   const [response, setResponse] = useState<Response>({
-    class1Name: "",     // E.g., Discete Structures
-    class1Number: "",   // E.g., CS 0441
-    class2Name: "",
-    class2Number: "",
-    class3Name: "",
-    class3Number: "",
-    class4Name: "",
-    class4Number: "",
+    class1Name: "N/A",     // E.g., Discete Structures
+    class1Number: "N/A",   // E.g., CS 0441
+    class2Name: "N/A",
+    class2Number: "N/A",
+    class3Name: "N/A",
+    class3Number: "N/A",
+    class4Name: "N/A",
+    class4Number: "N/A",
   });
 
   return (

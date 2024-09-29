@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import axios from 'axios';
 import Card from './Card'
 
@@ -31,13 +31,13 @@ interface Response {
 }
 
 function Catalog({ resp, setResp } : CatalogProps) {
-  const [card1Selected, setCard1Selected] = useState(true);
-  const [card2Selected, setCard2Selected] = useState(true);
-  const [card3Selected, setCard3Selected] = useState(true);
-  const [card4Selected, setCard4Selected] = useState(true);
+  const [card1Selected, setCard1Selected] = useState(false);
+  const [card2Selected, setCard2Selected] = useState(false);
+  const [card3Selected, setCard3Selected] = useState(false);
+  const [card4Selected, setCard4Selected] = useState(false);
 
   const [isHovered, setIsHovered] = useState(false);
-  const [apiData, setApiData] = useState('temp');         // Note: Set to 'temp' so program displays
+  const [apiData, setApiData] = useState('temp');         // Note: Set to 'temp' so program displays properly while PittAPI not working
   const [classes, setClasses] = useState<Classes | null>({
     class1Name: "",
     class1Decision: false,
@@ -51,6 +51,7 @@ function Catalog({ resp, setResp } : CatalogProps) {
 
   const uri = "http://localhost:8080/api/chat";
 
+  // Pitt API call
   /*useEffect(() => {
     fetch("http://localhost:8080/pitt-api")
     .then((res) => {
@@ -66,6 +67,18 @@ function Catalog({ resp, setResp } : CatalogProps) {
   const handleSubmit = async() => {
     //setApiData('')
 
+    // Set Classes variable to user inputs
+    setClasses({
+      class1Name: resp.class1Name,
+      class1Decision: card1Selected,
+      class2Name: resp.class2Name,
+      class2Decision: card2Selected,
+      class3Name: resp.class3Name,
+      class3Decision: card3Selected,
+      class4Name: resp.class4Name,
+      class4Decision: card4Selected,
+    })
+
     const formData = new FormData();
 
     formData.append('classes', JSON.stringify(classes))
@@ -78,60 +91,56 @@ function Catalog({ resp, setResp } : CatalogProps) {
     const response = await axios.post(uri, formData, customHeader)
     console.log(response)
     setResp(response.data['Response']);
-    setClasses(null);
-  }
-
-  console.log(resp);
-
-  const jsonObject1 = {
-    title: resp.class1Number + ": " + resp.class1Name,
-    description: "GG",
-    professor: "no"
-  }
-  const jsonObject2 = {
-    title: resp.class2Number + ": " + resp.class2Name,
-    description: "GG",
-    professor: "no"
-  }
-  const jsonObject3 = {
-    title: resp.class3Number + ": " + resp.class3Name,
-    description: "GG",
-    professor: "no"
-  }
-  const jsonObject4 = {
-    title: resp.class4Number + ": " + resp.class4Name,
-    description: "GG",
-    professor: "no"
+    
+    setClasses({
+      class1Name: resp.class1Name,
+      class1Decision: false,
+      class2Name: resp.class2Name,
+      class2Decision: false,
+      class3Name: resp.class3Name,
+      class3Decision: false,
+      class4Name: resp.class4Name,
+      class4Decision: false,
+    })
   }
 
   return (
     <>
       <h3 className="text-center">
-        {apiData ? "Please select the courses that look most interesting to you!" : "Loading..."}
+        {apiData ? "Please select the courses that look interesting to you!" : "Loading..."}
       </h3>
-      {apiData &&
-        <div className="d-flex align-items-center" style={{height: "92vh"}}>
-          <div className="row justify-content-between" style={{width: "100%"}}>
-            <div className="col-3 text-center">
-              <Card CourseInfo={[JSON.stringify(jsonObject1)]} statureHook={setCard1Selected} />
+      {apiData && <>
+        <p className="text-center mb-5">Then, ClassFinder will take your interests into account when suggesting you more courses! When you're finished, please press the submit button below!</p>
+        <div className="d-flex align-items-center justify-content-center flex-column">
+          <div className="container">
+            <div className="row justify-content-center mb-3">
+              <div className="col-6 text-center">
+                {/* Note: This currently has its values filled out as a demonstration of what the cards would look like. */}
+                <Card courseName={"Discrete Structures"} courseNumber={"CS 0441"} description="The purpose of this course is to understand and use (abstract) discrete structures that are backbones of computer science. In particular, this class is meant to introduce logic, proofs, sets, relations, functions, counting, and probability, with an emphasis on applications in computer science." statureVal={card1Selected} statureHook={setCard1Selected} />
+              </div>
+              <div className="col-6 text-center">
+                <Card courseName={resp.class2Name} courseNumber={resp.class2Number} description="GG" statureVal={card2Selected} statureHook={setCard2Selected} />
+              </div>
             </div>
-            <div className="col-3 text-center">
-            <Card CourseInfo={[JSON.stringify(jsonObject2)]} statureHook={setCard2Selected} />
-            </div>
-            <div className="col-3 text-center">
-            <Card CourseInfo={[JSON.stringify(jsonObject3)]} statureHook={setCard3Selected} />
-            </div>
-            <div className="col-3 text-center">
-            <Card CourseInfo={[JSON.stringify(jsonObject4)]} statureHook={setCard4Selected} />
+            <div className="row justify-content-center">
+              <div className="col-6 text-center">
+                <Card courseName={resp.class3Name} courseNumber={resp.class3Number} description="GG" statureVal={card3Selected} statureHook={setCard3Selected} />
+              </div>
+              <div className="col-6 text-center">
+                <Card courseName={resp.class4Name} courseNumber={resp.class4Number} description="GG" statureVal={card4Selected} statureHook={setCard4Selected} />
+              </div>
             </div>
           </div>
+          <div className="mt-5">
+            <button className="btn btn-lg btn-outline-primary" type="submit"
+            style={{fontWeight: "bold", backgroundColor: isHovered ? "#0d6efd" : "#003594", color: "#FFB81C"}}
+            onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)} onClick={handleSubmit}>
+              Submit!
+            </button>
+          </div>
         </div>
+        </>
       }
-      {apiData && <button className="btn btn-lg btn-outline-primary" type="submit" 
-        style={{fontWeight: "bold", backgroundColor: isHovered ? "#0d6efd" : "#003594", color: "#FFB81C"}}
-        onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)} onClick={handleSubmit}>
-          Submit!
-      </button>}
     </>
   )
 }

@@ -1,7 +1,6 @@
 //import Dropdown from 'react-bootstrap/Dropdown'
 import React, { useState } from 'react';
 import axios from 'axios';
-import CourseCard from './Card';
 import { useNavigate } from 'react-router-dom';
 
 const DummyCourse = [{"title": "ECE 0301", "description": "Introduction to problem solving with C++", "professor": "Dr. Gavin"}]
