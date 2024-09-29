@@ -13,11 +13,14 @@ def genRecommandtions(ScholarlyArea):
     model = genai.GenerativeModel('gemini-1.5-flash')
 
     prompt = "What classes would you recommend to a student trying"\
-            " to learn more about " + ScholarlyArea + ". Please format your response in JSON format. "
-    print(prompt)
+            " to learn more about " + ScholarlyArea + ". Please format your response in the following JSON format: " \
+            "{ \"class1Name\": \"Discrete Structures\", \"class1Number\": \"CS 0441\", \"class2Name\": \"\", " \
+            " \"class2Number\": \"\",  \"class3Name\": \"\", \"class3Number\": \"\", \"class4Name\": \"\",\"\ " \
+            " \"class4Number\": \"\",}"
+    print(prompt) #did it
 
     res = model.generate_content(prompt)
-    #print(res.text)
+    print(res.text)
     return res.text
 
 if(__name__ == "__main__"):
