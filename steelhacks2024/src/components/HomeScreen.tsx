@@ -198,9 +198,6 @@ function HomeScreen( { setResp } : HomeScreenProps) {
                     Submit!
                 </button>
             </div>
-
-            <CourseCard CourseInfo={DummyCourse} statureHook = {setPressed}/>
-            <CourseCard CourseInfo={DummyCourse} statureHook = {setPressed}/>
         </div>
     </div>
     </>
