@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios';
+import Card from './Card'
 
 interface CatalogProps {
   resp: Response;
@@ -30,10 +31,10 @@ interface Response {
 }
 
 function Catalog({ resp, setResp } : CatalogProps) {
-  const [card1Selected, setCard1Selected] = useState(false);
-  const [card2Selected, setCard2Selected] = useState(false);
-  const [card3Selected, setCard3Selected] = useState(false);
-  const [card4Selected, setCard4Selected] = useState(false);
+  const [card1Selected, setCard1Selected] = useState(true);
+  const [card2Selected, setCard2Selected] = useState(true);
+  const [card3Selected, setCard3Selected] = useState(true);
+  const [card4Selected, setCard4Selected] = useState(true);
 
   const [isHovered, setIsHovered] = useState(false);
   const [apiData, setApiData] = useState('temp');         // Note: Set to 'temp' so program displays
@@ -82,6 +83,27 @@ function Catalog({ resp, setResp } : CatalogProps) {
 
   console.log(resp);
 
+  const jsonObject1 = {
+    title: resp.class1Number + ": " + resp.class1Name,
+    description: "GG",
+    professor: "no"
+  }
+  const jsonObject2 = {
+    title: resp.class2Number + ": " + resp.class2Name,
+    description: "GG",
+    professor: "no"
+  }
+  const jsonObject3 = {
+    title: resp.class3Number + ": " + resp.class3Name,
+    description: "GG",
+    professor: "no"
+  }
+  const jsonObject4 = {
+    title: resp.class4Number + ": " + resp.class4Name,
+    description: "GG",
+    professor: "no"
+  }
+
   return (
     <>
       <h3 className="text-center">
@@ -91,16 +113,16 @@ function Catalog({ resp, setResp } : CatalogProps) {
         <div className="d-flex align-items-center" style={{height: "92vh"}}>
           <div className="row justify-content-between" style={{width: "100%"}}>
             <div className="col-3 text-center">
-              <p>Card1</p>
+              <Card CourseInfo={[JSON.stringify(jsonObject1)]} statureHook={setCard1Selected} />
             </div>
             <div className="col-3 text-center">
-              <p>Card2</p>
+            <Card CourseInfo={[JSON.stringify(jsonObject2)]} statureHook={setCard1Selected} />
             </div>
             <div className="col-3 text-center">
-              <p>Card3</p>
+            <Card CourseInfo={[JSON.stringify(jsonObject3)]} statureHook={setCard1Selected} />
             </div>
             <div className="col-3 text-center">
-              <p>Card4</p>
+            <Card CourseInfo={[JSON.stringify(jsonObject4)]} statureHook={setCard1Selected} />
             </div>
           </div>
         </div>

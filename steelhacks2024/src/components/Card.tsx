@@ -7,7 +7,7 @@ export default function CourseCard({CourseInfo, statureHook} : any){
 
     const [clicked, setClicked] = useState(true);
 
-    function handleClick(){
+    function handleClick() {
       setClicked(!clicked);
       statureHook(clicked);
     }
