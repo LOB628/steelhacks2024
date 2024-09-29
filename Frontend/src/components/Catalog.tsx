@@ -64,11 +64,9 @@ function Catalog({ resp, setResp } : CatalogProps) {
     .catch((e) => console.error("Error fetching table:", e))
 }, []);*/
 
-  const handleSubmit = async() => {
-    //setApiData('')
-    console.log("TEST!! Handlesubmit");
+  const handleSubmit = () => {
+    console.log(resp);
 
-    // Set Classes variable to user inputs
     setClasses({
       class1Name: resp.class1Name,
       class1Decision: card1Selected,
@@ -78,7 +76,15 @@ function Catalog({ resp, setResp } : CatalogProps) {
       class3Decision: card3Selected,
       class4Name: resp.class4Name,
       class4Decision: card4Selected,
-    })
+    });
+
+    console.log(classes);
+
+    callBackend();
+  }
+
+  const callBackend = async () => {
+    //setApiData('')
 
     const formData = new FormData();
 

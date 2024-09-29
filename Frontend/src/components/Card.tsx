@@ -1,6 +1,6 @@
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 interface CourseCardProps {
   courseName: string;
@@ -12,19 +12,23 @@ interface CourseCardProps {
 
 export default function CourseCard({courseName, courseNumber, description, statureVal, statureHook} : CourseCardProps){
 
-    // Original attempt at equalizing heights. Works, but users can see the change
-    /*useEffect(() => {
+    const [hidden, setHidden] = useState(true);
+    
+    // Equalizes heights of cards. Might be a little less efficient than the DOM Listener, but it actually works with the backend.
+    useEffect(() => {
       // Script to set card height to max height necessary
       const elements = document.querySelectorAll('.eq-height');
       const maxHeight = Math.max(...Array.from(elements).map(element => element.clientHeight));
       elements.forEach(element => (element as HTMLElement).style.height = `${maxHeight}px`);
-    }, []);*/
+      setHidden(false);
+    }, []);
 
-    // Best way to sync heights of cards. Use state variable and DOM listener, hide cards until change has been made
-    const [hidden, setHidden] = useState(true);
-    document.addEventListener("DOMContentLoaded", updateHeights);
+    // Best way to sync heights of cards, but wasn't working with backend for some reason?
+    /*document.addEventListener("DOMContentLoaded", updateHeights);
+    console.log("TEST 0");
 
     function updateHeights() {
+      console.log("TEST 1");
       // Script to set card height to max height necessary
       const elements = document.querySelectorAll('.eq-height');
 
@@ -33,9 +37,8 @@ export default function CourseCard({courseName, courseNumber, description, statu
       const maxHeight = Math.max(...Array.from(elements).map(element => element.clientHeight));
       elements.forEach(element => (element as HTMLElement).style.height = `${maxHeight}px`);
 
-      console.log("TEST");
       setHidden(false);
-    }
+    }*/
 
     function handleClick() {
       statureHook(!statureVal);

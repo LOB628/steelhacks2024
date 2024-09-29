@@ -3,8 +3,6 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-const DummyCourse = [{"title": "ECE 0301", "description": "Introduction to problem solving with C++", "professor": "Dr. Gavin"}]
-
 interface HomeScreenProps {
     setResp: React.Dispatch<React.SetStateAction<Response>>;
 }
@@ -136,16 +134,22 @@ function HomeScreen( { setResp } : HomeScreenProps) {
     const handleSubmit = async() => {
         const formData = new FormData();
 
-        formData.append('Interests', interest)
+        formData.append('Interests', interest);
         const customHeader = {
             headers: {
                 "Content-Type": 'multipart/form-data',
             },
-        }
+        };
         
-        const response = await axios.post(uri, formData, customHeader)
-        console.log(response)
-        setResp(JSON.parse(response.data['Response']));
+        const response = await axios.post(uri, formData, customHeader);
+        console.log(response);
+
+        // Convert response into proper JSON
+        let str = (response.data['Response'] as string);
+        str = str.substring(7, str.lastIndexOf("}")+1);
+        console.log(str);
+
+        setResp(JSON.parse(str));
         setInterest('');
 
         // Move to new page

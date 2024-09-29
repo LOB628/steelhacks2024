@@ -8,7 +8,6 @@ import Catalog from './components/Catalog';
 interface Response {
   class1Name: string;
   class1Number: string;
-  
   class2Name: string;
   class2Number: string;
   class3Name: string;
