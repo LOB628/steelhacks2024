@@ -2,6 +2,17 @@ import { useState } from 'react'
 import axios from 'axios';
 import Card from './Card'
 
+interface Response {
+  class1Name: string;
+  class1Number: string;
+  class2Name: string;
+  class2Number: string;
+  class3Name: string;
+  class3Number: string;
+  class4Name: string;
+  class4Number: string;
+}
+
 interface CatalogProps {
   resp: Response;
   setResp: React.Dispatch<React.SetStateAction<Response>>;
@@ -17,17 +28,6 @@ interface Classes {
   class3Decision: boolean;
   class4Name: string;
   class4Decision: boolean;
-}
-
-interface Response {
-  class1Name: string;
-  class1Number: string;
-  class2Name: string;
-  class2Number: string;
-  class3Name: string;
-  class3Number: string;
-  class4Name: string;
-  class4Number: string;
 }
 
 function Catalog({ resp, setResp } : CatalogProps) {
@@ -66,6 +66,7 @@ function Catalog({ resp, setResp } : CatalogProps) {
 
   const handleSubmit = async() => {
     //setApiData('')
+    console.log("TEST!! Handlesubmit");
 
     // Set Classes variable to user inputs
     setClasses({
