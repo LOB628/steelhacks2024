@@ -55,3 +55,15 @@ def chat():
     except():
         return {'Code': 500, 'Response': "An error occurred."}
     
+@app.route('/api/pitt-api', methods=['POST'])
+@cross_origin(origin="*", headers=['Content-Type', 'Authorization'])
+def pitt():
+    message = request.form.get('classes')
+    #*assumes message comes from a formdata() and not a request.
+
+    try:
+        response = chatObj.send_message(message)
+        return {'Code': 200, 'Response': response}
+    except():
+        return {'Code': 500, 'Response': "An error occurred."}
+    
