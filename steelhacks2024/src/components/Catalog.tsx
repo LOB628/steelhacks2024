@@ -1,6 +1,15 @@
-import React from 'react'
+import { useState } from 'react'
 
-function Catalog() {
+interface CatalogProps {
+  resp: string
+}
+
+function Catalog({ resp } : CatalogProps) {
+  const [card1Selected, setCard1Selected] = useState(false)
+  const [card2Selected, setCard2Selected] = useState(false)
+  const [card3Selected, setCard3Selected] = useState(false)
+  const [card4Selected, setCard4Selected] = useState(false)
+
   return (
     <>
     <h3 className="text-center">Please select the courses that look most interesting to you!</h3>
