@@ -6,6 +6,7 @@ from dotenv import load_dotenv
 #Gemini Functions
 from Gemini.Chat import LiveChat
 from Gemini.Gemini import Gemini
+from Gemini.CourseRec import genRecommandtions
 
 app = Flask(__name__)
 app.config['CORS_HEADERS'] = 'Content-Type'
@@ -19,11 +20,11 @@ def gemi():
     prompt = request.form.get('Interests')
     #print(prompt['content'])
     try:
-        res = Gemini(prompt)
+        res = genRecommandtions(prompt)
         return {'Code':200, 'Response': res}
     except:
         print("Something went wrong")
-        res = Gemini(prompt)
+        res = genRecommandtions(prompt)
         return {'Code':500, 'Response': 'Something went wrong'}
 
 
