@@ -21,6 +21,8 @@ chatObj = LiveChat
 def gemi():
     prompt = request.form.get('Interests')
     #print(prompt['content'])
+    os.chdir("..")
+    print(os.getcwd())
     try:
         res = genRecommandtions(prompt)
         return {'Code':200, 'Response': res}
