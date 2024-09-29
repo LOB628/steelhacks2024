@@ -121,7 +121,7 @@ function HomeScreen( { setResp } : HomeScreenProps) {
     const uri = "http://localhost:8080/api/gemini";
 
     const [interest, setInterest] = useState('');
-    
+    const [pressed, setPressed] = useState(false);
 
     const handleSubmit = async() => {
         const formData = new FormData();
@@ -188,8 +188,8 @@ function HomeScreen( { setResp } : HomeScreenProps) {
                 </button>
             </div>
 
-            <CourseCard CourseInfo={DummyCourse} />
-
+            <CourseCard CourseInfo={DummyCourse} statureHook = {setPressed}/>
+            <CourseCard CourseInfo={DummyCourse} statureHook = {setPressed}/>
         </div>
     </div>
     </>
