@@ -24,6 +24,7 @@ def genRecommandtions(ScholarlyArea):
             " \"class4Number\": \"\",}"
     print(prompt) #did it
 
+
     res = model.generate_content([file, prompt])
     #res = model.generate_content(prompt)
     print(res.text)

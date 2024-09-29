@@ -14,8 +14,9 @@ app = Flask(__name__)
 app.config['CORS_HEADERS'] = 'Content-Type'
 cors = CORS(app, resources={r"/api": {"origins":"*"}})
 
-chatObj = LiveChat
+chatObj = LiveChat("Give class recommendations to university of pittsburgh students.")
 
+lastRes = ""
 
 @app.route('/api/gemini', methods=['GET', 'POST'])
 @cross_origin(origin="*", headers=['Content-Type', 'Authorization'])
@@ -26,7 +27,10 @@ def gemi():
     print(os.getcwd())
     try:
         res = genRecommandtions(prompt)
-        chatObj.history.append({'role':'model', 'parts':res})
+        lastRes = res
+        chatObj.history = []
+        chatObj.history.append({'role':'model', 'parts':lastRes})
+
         return {'Code':200, 'Response': res}
     except:
         print("Something went wrong")
@@ -54,11 +58,14 @@ def init_chat():
 def chat():
     message = request.form.get('classes')
     #print(message)
-    prompt = "The user likes these classes from the ones you picked. Can you pick 4 other classes?" + message
+    prompt = "The user likes these classes from the ones you picked. Can you pick 4 other classes? Please use the following JSON Format: Please format your response in the following JSON format: " \
+            "{ \"class1Name\": \"Discrete Structures\", \"class1Number\": \"CS 0441\", \"class2Name\": \"\", " \
+            " \"class2Number\": \"\",  \"class3Name\": \"\", \"class3Number\": \"\", \"class4Name\": \"\",\" " \
+            " \"class4Number\": \"\",}" + message
     #*assumes message comes from a formdata() and not a request.
 
     try:
-        response = chatObj.send_message(prompt)
+        response = chatObj.send_message(msg=prompt)
         return {'Code': 200, 'Response': response}
     except():
         return {'Code': 500, 'Response': "An error occurred."}
@@ -68,10 +75,10 @@ def chat():
 def pitt():
     message = request.form.get('classes')
     #*assumes message comes from a formdata() and not a request.
-
+    print(message)
     try:
-        response = chatObj.send_message(message)
-        return {'Code': 200, 'Response': response}
+        #response = chatObj.send_message(msg=message)
+        return {'Code': 200, 'Response': "response"}
     except():
         return {'Code': 500, 'Response': "An error occurred."}
     
