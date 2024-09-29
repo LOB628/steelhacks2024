@@ -119,7 +119,7 @@ function HomeScreen() {
 
     const [resp, setResp] = useState('');
     const [interest, setInterest] = useState('');
-    
+    const [pressed, setPressed] = useState(false);
 
     const handleSubmit = async() => {
         const formData = new FormData();
@@ -187,8 +187,8 @@ function HomeScreen() {
                 </button>
             </div>
 
-            <CourseCard CourseInfo={DummyCourse} />
-
+            <CourseCard CourseInfo={DummyCourse} statureHook = {setPressed}/>
+            <CourseCard CourseInfo={DummyCourse} statureHook = {setPressed}/>
         </div>
     </div>
     </>
