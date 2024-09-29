@@ -32,7 +32,7 @@ function NavBar() {
                 onMouseLeave={() => {
                     setSelectedItem(-1);
                 }}
-                style={{backgroundColor: selectedItem === 1 ? "#0d6efd" : "transparent",}}>
+                style={{backgroundColor: selectedItem === 1 ? "#0d6efd" : "transparent"}}>
                     <a href="https://catalog.upp.pitt.edu/index.php?catoid=225" target="_blank" style={{fontWeight: "bold", color: "#FFB81C", textDecoration: "none"}}>Course Catalog</a>
                 </li>
                 {/*<li className="nav-item">

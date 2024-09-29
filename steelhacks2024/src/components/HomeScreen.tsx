@@ -1,12 +1,16 @@
 //import Dropdown from 'react-bootstrap/Dropdown'
-import { useState } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import CourseCard from './Card';
-
-const DummyCourse = [{"title": "ECE 0301", "description": "Introduction to problem solving with C++", "professor": "Dr. Gavin"}]
 import { useNavigate } from 'react-router-dom';
 
-function HomeScreen() {
+const DummyCourse = [{"title": "ECE 0301", "description": "Introduction to problem solving with C++", "professor": "Dr. Gavin"}]
+
+interface HomeScreenProps {
+    setResp: React.Dispatch<React.SetStateAction<string>>;
+  }
+
+function HomeScreen( { setResp } : HomeScreenProps) {
     /*const majors = [
         "Accounting",
         "Actuarial Mathematics",
@@ -116,8 +120,6 @@ function HomeScreen() {
 
     const uri = "http://localhost:8080/api/gemini";
 
-
-    const [resp, setResp] = useState('');
     const [interest, setInterest] = useState('');
     const [pressed, setPressed] = useState(false);
 
@@ -173,11 +175,11 @@ function HomeScreen() {
                     ))}
                 </Dropdown.Menu>
             </Dropdown>*/}
-            {resp && (
+            {/*resp && (
                 <div className="Response-message">
                     {resp}
                 </div>
-            )}
+            )*/}
             <div className="row-2 mt-3">
                 <button className="btn btn-lg btn-outline-primary" type="submit" 
                 style={{fontWeight: "bold", backgroundColor: isHovered ? "#0d6efd" : "#003594", color: "#FFB81C"}}
