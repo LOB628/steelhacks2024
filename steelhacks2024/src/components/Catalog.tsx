@@ -116,13 +116,13 @@ function Catalog({ resp, setResp } : CatalogProps) {
               <Card CourseInfo={[JSON.stringify(jsonObject1)]} statureHook={setCard1Selected} />
             </div>
             <div className="col-3 text-center">
-            <Card CourseInfo={[JSON.stringify(jsonObject2)]} statureHook={setCard1Selected} />
+            <Card CourseInfo={[JSON.stringify(jsonObject2)]} statureHook={setCard2Selected} />
             </div>
             <div className="col-3 text-center">
-            <Card CourseInfo={[JSON.stringify(jsonObject3)]} statureHook={setCard1Selected} />
+            <Card CourseInfo={[JSON.stringify(jsonObject3)]} statureHook={setCard3Selected} />
             </div>
             <div className="col-3 text-center">
-            <Card CourseInfo={[JSON.stringify(jsonObject4)]} statureHook={setCard1Selected} />
+            <Card CourseInfo={[JSON.stringify(jsonObject4)]} statureHook={setCard4Selected} />
             </div>
           </div>
         </div>
