@@ -7,8 +7,19 @@ import { useNavigate } from 'react-router-dom';
 const DummyCourse = [{"title": "ECE 0301", "description": "Introduction to problem solving with C++", "professor": "Dr. Gavin"}]
 
 interface HomeScreenProps {
-    setResp: React.Dispatch<React.SetStateAction<string>>;
-  }
+    setResp: React.Dispatch<React.SetStateAction<Response>>;
+}
+
+interface Response {
+    class1Name: string;
+    class1Number: string;
+    class2Name: string;
+    class2Number: string;
+    class3Name: string;
+    class3Number: string;
+    class4Name: string;
+    class4Number: string;
+}
 
 function HomeScreen( { setResp } : HomeScreenProps) {
     /*const majors = [
