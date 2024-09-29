@@ -36,7 +36,7 @@ def init_chat():
 
     chatObj.history = []
     
-    chatHistory = request.form.get('lastMsg')
+    chatHistory = request.form.get('LastMsg')
     if (chatHistory == ""):
         return {'Code': 201, 'Response': 'Success'}
     chatObj.history.append({'role':'model', 'parts':chatHistory})
@@ -46,7 +46,7 @@ def init_chat():
 @app.route('/api/chat', methods=['POST'])
 @cross_origin(origin="*", headers=['Content-Type', 'Authorization'])
 def chat():
-    message = request.form.get('message')
+    message = request.form.get('classes')
     #*assumes message comes from a formdata() and not a request.
 
     try:
