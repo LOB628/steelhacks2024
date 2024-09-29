@@ -109,18 +109,18 @@ function Catalog({ resp, setResp } : CatalogProps) {
             <div className="row justify-content-center mb-3">
               <div className="col-6 text-center">
                 {/* Note: This currently has its values filled out as a demonstration of what the cards would look like. */}
-                <Card courseName={"Discrete Structures"} courseNumber={"CS 0441"} description="The purpose of this course is to understand and use (abstract) discrete structures that are backbones of computer science. In particular, this class is meant to introduce logic, proofs, sets, relations, functions, counting, and probability, with an emphasis on applications in computer science." statureVal={card1Selected} statureHook={setCard1Selected} />
+                <Card courseName={resp.class1Name} courseNumber={resp.class1Number} description="Description TBA" statureVal={card1Selected} statureHook={setCard1Selected} />
               </div>
               <div className="col-6 text-center">
-                <Card courseName={resp.class2Name} courseNumber={resp.class2Number} description="GG" statureVal={card2Selected} statureHook={setCard2Selected} />
+                <Card courseName={resp.class2Name} courseNumber={resp.class2Number} description="Description TBA" statureVal={card2Selected} statureHook={setCard2Selected} />
               </div>
             </div>
             <div className="row justify-content-center">
               <div className="col-6 text-center">
-                <Card courseName={resp.class3Name} courseNumber={resp.class3Number} description="GG" statureVal={card3Selected} statureHook={setCard3Selected} />
+                <Card courseName={resp.class3Name} courseNumber={resp.class3Number} description="Description TBA" statureVal={card3Selected} statureHook={setCard3Selected} />
               </div>
               <div className="col-6 text-center">
-                <Card courseName={resp.class4Name} courseNumber={resp.class4Number} description="GG" statureVal={card4Selected} statureHook={setCard4Selected} />
+                <Card courseName={resp.class4Name} courseNumber={resp.class4Number} description="Description TBA" statureVal={card4Selected} statureHook={setCard4Selected} />
               </div>
             </div>
           </div>
