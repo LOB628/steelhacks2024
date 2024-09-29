@@ -16,6 +16,7 @@ cors = CORS(app, resources={r"/api": {"origins":"*"}})
 
 chatObj = LiveChat
 
+
 @app.route('/api/gemini', methods=['GET', 'POST'])
 @cross_origin(origin="*", headers=['Content-Type', 'Authorization'])
 def gemi():
@@ -25,6 +26,7 @@ def gemi():
     print(os.getcwd())
     try:
         res = genRecommandtions(prompt)
+        chatObj.history.append({'role':'model', 'parts':res})
         return {'Code':200, 'Response': res}
     except:
         print("Something went wrong")
@@ -51,10 +53,12 @@ def init_chat():
 @cross_origin(origin="*", headers=['Content-Type', 'Authorization'])
 def chat():
     message = request.form.get('classes')
+    #print(message)
+    prompt = "The user likes these classes from the ones you picked. Can you pick 4 other classes?" + message
     #*assumes message comes from a formdata() and not a request.
 
     try:
-        response = chatObj.send_message(message)
+        response = chatObj.send_message(prompt)
         return {'Code': 200, 'Response': response}
     except():
         return {'Code': 500, 'Response': "An error occurred."}
